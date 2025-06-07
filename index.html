@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Tarefas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <section>
-        <main class="container">
-            <h1>Lista de Tarefas</h1>
+      <main class="container">
+        <h1>Lista de Tarefas</h1>
 
-            <div class="lista">
-                   <div class="pesquisa">
-                    <input type="text" placeholder="Adicione uma Nova Tarefa" class="campo">
-                  <i class="fa-solid fa-plus adicionarTarefa"></i>
-                  <i class="fa-solid fa-trash apagarCampo"></i>
-                   </div>
+        <div class="lista">
+          <div class="pesquisa">
+            <div class="pesquisa-inputs">
+              <input
+                type="text"
+                placeholder="Adicione uma Nova Tarefa"
+                class="campo"
+              />
 
-                   <div class="listas">
-                    <ul class="items-lista">
-                        <li class="lista-item">
-                            <p>Estudar HTML</p>
-                            <div class="icons">
-                                <i class="fa-solid fa-pen editar"></i>
-                                <i class="fa-solid fa-trash apagar"></i>
-                            </div>
-                        </li>
-                        <li class="lista-item">
-                            <p>Estudar HTML</p>
-                            <div class="icons">
-                                <i class="fa-solid fa-pen editar"></i>
-                                <i class="fa-solid fa-trash apagar"></i>
-                            </div>
-                        </li>
-                        <li class="lista-item">
-                            <p>Estudar HTML</p>
-                            <div class="icons">
-                                <i class="fa-solid fa-pen editar"></i>
-                                <i class="fa-solid fa-trash apagar"></i>
-                            </div>
-                        </li>
-                    </ul>
-                   </div>
+              <i class="fa-solid fa-plus adicionarTarefa"></i>
+              <i class="fa-solid fa-trash apagarCampo"></i>
             </div>
-        </main>
+
+            <div class="pesquisa-msg">
+              <p class="msg-input"></p>
+            </div>
+          </div>
+
+          <div class="listas">
+            <ul class="itens-lista">
+              <li class="lista-item">
+                <p class="texto-item">Estudar HTML</p>
+                <div class="icons">
+                  <i class="fa-solid fa-pen editar icon"></i>
+                  <i class="fa-solid fa-trash apagar icon"></i>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

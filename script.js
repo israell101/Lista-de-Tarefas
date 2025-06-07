@@ -1,43 +1,73 @@
-let campo = document.querySelector(".campo");//INPUT
+let campo = document.querySelector(".campo"); //INPUT
 
-let listasTarefas = document.querySelector(".items-lista");
+let listasTarefas = document.querySelector(".itens-lista"); //UL DA LISTA
 
 const adicionar = document.querySelector(".adicionarTarefa");
 const limpar = document.querySelector(".apagarCampo");
 
-const editar = document.querySelector(".editar");//TAREFA
-const apagar = document.querySelector(".apagar");//TAREFA
+const icon = document.querySelector(".icons"); //PAI CLASS
 
-const tarefas = []
+const editar = document.querySelector(".editar"); //TAREFA
+const apagar = document.querySelector(".apagar"); //TAREFA
+
+let msg = document.querySelector(".msg-input");
+
+const tarefas = [];
 
 adicionar.addEventListener("click", adicionarTarefa);
 limpar.addEventListener("click", limparCampo);
 editar.addEventListener("click", editarTarefa);
 apagar.addEventListener("click", deletarTarefa);
 
-function adicionarTarefa(){
-    tarefas.push(campo.value)
+function adicionarTarefa() {
+  tarefas.push(campo.value);
+
+  if (campo.value == "") {
+    msg.textContent = "Escreva sua tarefa";
+    msg.style.color = "red";
+  } else {
+    let novaLI = document.createElement("li");
+    novaLI.classList.add("lista-item");
+    // <li class="lista-item">
+    listasTarefas.appendChild(novaLI);
+
+    let p_item = document.createElement("p");
+    p_item.classList.add("texto-item");
+    novaLI.appendChild(p_item);
+    //<p class="texto-item">Estudar HTML</p>
+    p_item.textContent = campo.value;
+
+    let novaDiv = document.createElement("div");
+    novaDiv.classList.add("icons");
+    //  <div class="icons"> </div>
+    novaLI.appendChild(novaDiv);
+
+    let novoI = document.createElement("i");
+    novoI.classList.add("fa-solid", "fa-pen", "editar", "icon");
+    // <i class="fa-solid fa-pen editar icon"></i>
+    novaDiv.appendChild(novoI);
+
+    novoI = document.createElement("i");
+    novoI.classList.add("fa-solid", "fa-trash", "apagar", "icon");
+    novaDiv.appendChild(novoI);
+
+    msg.textContent = "Tarefa adicionada";
+    msg.style.color = "#0AD350";
+
     console.log(tarefas)
-
-    novaTarefa = document.createElement("li")//li é o elemento
-    novaTarefa.classList.add("lista-item");
-    listasTarefas.appendChild(novaTarefa) //lista é o pai
-    novaTarefa.textContent = campo.value
-
-
-    campo.value = ""
+    campo.value = "";
+  }
 }
 
 function deletarTarefa() {
-
-    console.log(tarefas);
+    
 }
 
 function editarTarefa() {
-
-    console.log(tarefas);
+    
 }
 
 function limparCampo() {
-    campo.value = ""
+  campo.value = "";
+  msg.textContent = "";
 }
