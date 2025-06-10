@@ -2,13 +2,14 @@ let campo = document.querySelector(".campo"); //INPUT
 
 const adicionar = document.querySelector(".adicionarTarefa");
 const limpar = document.querySelector(".apagarCampo");
-
-const icon = document.querySelector(".icons"); //PAI CLASS
-
 const editar = document.querySelector(".editar"); //TAREFA
 const apagar = document.querySelector(".apagar"); //TAREFA
 
-const limparTudo = document.querySelector(".btn-limpar")
+const listasTarefas = document.querySelector(".lista-item");
+
+const icon = document.querySelector(".icons"); //PAI CLASS
+
+const limparTudo = document.querySelector(".btn-limpar");
 
 let msg = document.querySelector(".msg-input");
 
@@ -20,68 +21,57 @@ editar.addEventListener("click", editarTarefa);
 apagar.addEventListener("click", deletarTarefa);
 limparTudo.addEventListener("click", limparTarefas);
 
-function adicionarTarefa() {  
-     
-  if(campo.value == "") {
+function adicionarTarefa() {
+  if (campo.value == "") {
     msg.textContent = "Escreva uma tarefa";
     msg.style.color = "red";
-  } 
-  
-  else {
-    tarefas.push(campo.value);
-    let listasTarefas = document.querySelector(".itens-lista"); //UL DA LISTA
-    listasTarefas.innerHTML = ""
+  } else {
+    if (tarefas.includes(campo.value)) {
+      //SE EXISTE LISTA JÁ EXISTENTE
+      msg.textContent = "Essa tarefa já existe";
+      msg.style.color = "red";
+    } else {
+      tarefas.push(campo.value);
+      let listasTarefas = document.querySelector(".itens-lista"); //UL DA LISTA
+      listasTarefas.innerHTML = "";
 
-    msg.textContent = "Tarefa adicionada";
-    msg.style.color = "#1CCE3A";
+      msg.textContent = "Tarefa adicionada";
+      msg.style.color = "#1CCE3A";
 
-    console.log(tarefas)
-    //console.log(tarefas)
-    for (let i = 0; i < tarefas.length; i++) {
-      let novaLI = document.createElement("li");
-      novaLI.classList.add("lista-item");
-      // <li class="lista-item">
-      listasTarefas.appendChild(novaLI);
+      for (let i = 0; i < tarefas.length; i++) {
+       
+        ul.innerHTML = ` <li class="lista-item">
+            <p class="texto-item">Estudar HTML</p>
+                <div class="icons">
+                  <i class="fa-solid fa-pen editar icon"></i>
+                  <i class="fa-solid fa-trash apagar icon"></i>
+                </div>
+              </li>`
 
-      let p_item = document.createElement("p");
-      p_item.classList.add("texto-item");
-      novaLI.appendChild(p_item);
-      //<p class="texto-item">Estudar HTML</p>
-      p_item.textContent = tarefas[i];
-      p_item.value = "";
-      console.log(p_item.value);
-      let novaDiv = document.createElement("div");
-      novaDiv.classList.add("icons");
-      //  <div class="icons"> </div>
-      novaLI.appendChild(novaDiv);
-
-      let novoI1 = document.createElement("i");
-      novoI1.classList.add("fa-solid", "fa-pen", "editar", "icon");
-      // <i class="fa-solid fa-pen editar icon"></i>
-      novaDiv.appendChild(novoI1);
-      let novoI2 = document.createElement("i");
-      novoI2.classList.add("fa-solid", "fa-trash", "apagar", "icon");
-      novaDiv.appendChild(novoI2);
-
-      
-      // console.log(tarefas);
-      // console.log(`${tarefas}`, tarefas.indexOf[i])
+        campo.value = "";
+        console.log(tarefas);
+      }
     }
   }
 }
 
 function deletarTarefa() {
-  //let index = tarefas.indexOf(dado)
- // console.log(index)
+  const listasT = document.querySelector(".itens-lista");
+
+  if (tarefas.length > 0) {
+    listasT.innerHTML = ""; // limpa a lista visual
+    tarefas.length = 0; // esvazia o array
+    msg.textContent = "Tarefas apagadas com sucesso!";
+    msg.style.color = "green";
+  } else {
+    msg.textContent = "Nada a ser apagado";
+    msg.style.color = "red";
+  }
 }
 
-function editarTarefa() {
+// function editarTarefa() {}
 
-}
-
-function limparTarefas(){
-  tarefas.splice(0, tarefas.length)
-}
+// function limparTarefas(lista) {}
 
 function limparCampo() {
   campo.value = "";

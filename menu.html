@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+
+    <script>
+      function datas() {
+        const data = new Date();
+
+        const ano = data.getFullYear();
+        const mes = (data.getMonth() + 1).toString().padStart(2, "0");
+        const dia = data.getDate().toString().padStart(2, "0");
+
+        return `${dia}/${mes}/${ano}`;
+      }
+
+      // Chamando a função:
+      const resultado = datas();
+      console.log("Data retornada:", resultado);
+    </script>
+    
+  </body>
+</html>
